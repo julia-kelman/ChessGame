@@ -24,14 +24,14 @@ public class Player {
         } else {
             this.email = email;
         }
-
-//        if (rank=null || rank<100 || rank<3000){
+//
+//        if (rank=null || rank.isEmpty || rank.isBlank || rank<100 || rank<3000){
 //            throw new IllegalArgumentException("error in rank");
 //        }
 //        else{
 //            this.rank=rank;
 //        }
-
+//
 //        if (age=null || age<18 || age>100){
 //            throw new IllegalArgumentException("error in age");
 //        }
@@ -70,6 +70,11 @@ public class Player {
             throw new IllegalArgumentException("error");
         }
         this.rank = rank;
+    }
+
+    public void movePiece(Piece piece, Spot spot){
+        piece.setSpot(spot);
+        System.out.println("piece "+piece.getName()+" is moved to: "+ spot);
     }
 
     @Override

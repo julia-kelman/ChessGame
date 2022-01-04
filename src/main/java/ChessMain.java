@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ChessMain {
 
@@ -28,7 +29,15 @@ public class ChessMain {
             System.out.println(player);
         }
 
+        main.createPiece();
+
+        HashMap<String, Piece> pieceHashMap=main.createPiece();
+        System.out.println(pieceHashMap);
+
+        main.play(players, pieceHashMap);
     }
+
+
 
     public ArrayList<Player> createPlayers(){
         ArrayList<Player> players= new ArrayList<>();
@@ -41,4 +50,34 @@ public class ChessMain {
 
         return players;
     }
+
+    public HashMap<String, Piece> createPiece(){
+        King whiteKing= new King(new Spot("H", 7), "white_king", true);
+        System.out.println(whiteKing);
+        King blackKing= new King(new Spot("D", 8), "black_king", false);
+        System.out.println(blackKing);
+        Rook whiteRookOne=new Rook(new Spot("G", 7), "white_rook_1", true);
+        Rook whiteRookTwo= new Rook (new Spot("A", 7), "white_rook_2", true);
+        Knight blackKnight= new Knight(new Spot("D", 6), "black_knight", false);
+        System.out.println(whiteRookOne);
+        System.out.println(whiteRookTwo);
+        System.out.println(blackKnight);
+
+        HashMap <String, Piece> pieceHashMap=new HashMap<>();
+        pieceHashMap.put(whiteKing.getID(), whiteKing);
+        pieceHashMap.put(blackKing.getID(), blackKing);
+        pieceHashMap.put(whiteRookOne.getID(),whiteRookOne);
+        pieceHashMap.put(whiteRookTwo.getID(), whiteRookTwo);
+        pieceHashMap.put(blackKnight.getID(), blackKnight);
+
+        return pieceHashMap;
+    }
+
+    public void play(ArrayList <Player> players, HashMap<String, Piece> hashMap){
+        players.get(0).movePiece(hashMap.get("white_rook_1"), new Spot("A", 8));
+        players.get(1).movePiece(hashMap.get("black_knight"), new Spot("C", 8));
+    }
+
+
+
 }
