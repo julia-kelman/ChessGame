@@ -22,6 +22,11 @@ public class Spot {
     public Spot(String x, int y) {
         this.x = x;
         this.y = y;
+
+        //test: user is within the board:
+        if (x.compareTo("H")>0 || y>8 || y<=0){
+            throw new IllegalArgumentException("Outside the board");
+        }
     }
 
 
@@ -32,4 +37,5 @@ public class Spot {
                 ", y=" + y +
                 '}';
     }
+
 }

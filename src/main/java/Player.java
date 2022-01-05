@@ -25,14 +25,14 @@ public class Player {
             this.email = email;
         }
 //
-//        if (rank=null || rank.isEmpty || rank.isBlank || rank<100 || rank<3000){
+//        if (rank.isBlank() || rank<100 || rank<3000){
 //            throw new IllegalArgumentException("error in rank");
 //        }
 //        else{
 //            this.rank=rank;
 //        }
-//
-//        if (age=null || age<18 || age>100){
+////
+//        if (age.isEmpty() || age<18 || age>100){
 //            throw new IllegalArgumentException("error in age");
 //        }
 //        else {
@@ -75,6 +75,11 @@ public class Player {
     public void movePiece(Piece piece, Spot spot){
         piece.setSpot(spot);
         System.out.println("piece "+piece.getName()+" is moved to: "+ spot);
+
+        //test : white player cant use black piece:
+        if(isWhite() != piece.isWhite()){
+            throw new IllegalArgumentException("color doesn't match");
+        }
     }
 
     @Override
@@ -87,4 +92,7 @@ public class Player {
                 ", age=" + age +
                 '}';
     }
+
+
+
 }
